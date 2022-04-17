@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "printer.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ private:
 	void getPredecessor(treeNode* p, int& item);
 	void destroy(treeNode*& p);
 	int height(treeNode* p, int& h);
+	printer printerObj;
 
 public:
 	bst();
@@ -297,11 +299,9 @@ Post-condition : none
 */
 void bst::printTree(ofstream& f)
 {
-	cout << "---------------------------------------------------------------" << endl;
-	f << "---------------------------------------------------------------" << endl;
+	printerObj.printEverywhere(f, "---------------------------------------------------------------/n");
 	print(root, f, 0);
-	f << "---------------------------------------------------------------" << endl;
-	cout << "---------------------------------------------------------------" << endl;
+	printerObj.printEverywhere(f, "---------------------------------------------------------------/n");
 }
 
 /*
@@ -321,18 +321,17 @@ void bst::print(treeNode* p, ofstream& f, int addSpaces)
 
 		for (int i = 0; i < addSpaces; i++)
 		{
-			f << " ";
-			cout << " ";
+			printerObj.printEverywhere(f, " ");
 		}
 		if (p->twin != NULL && p->numOfTwin > 1)
 		{
-			f << p->key << "(" << p->numOfTwin << ")" << endl;
-			cout << p->key << "(" << p->numOfTwin << ")" << endl;
+			string a = p->key + '(' + p->numOfTwin + ")/n";
+			printerObj.printEverywhere(f, a);
 		}
 		else
 		{
-			f << p->key << endl;
-			cout << p->key << endl;
+			string a = p->key + "/n";
+			printerObj.printEverywhere(f, a);
 		}
 
 		if (p->left != NULL)

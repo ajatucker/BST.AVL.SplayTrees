@@ -29,5 +29,8 @@
     <ClInclude Include="splay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="printer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "printer.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ private:
 	void zagZig(treeNode*& r);
 	void zigZag(treeNode*& r);
 	void splaying(treeNode*& p, int item, vector<string>& s, int& count);
+	printer printerObj;
 
 public:
 	splay();
@@ -511,11 +513,9 @@ Post-condition : none
 */
 void splay::printTree(ofstream& f)
 {
-	cout << "---------------------------------------------------------------" << endl;
-	f << "---------------------------------------------------------------" << endl;
+	printerObj.printEverywhere(f, "---------------------------------------------------------------/n");
 	print(root, 0, f);
-	cout << "---------------------------------------------------------------" << endl;
-	f << "---------------------------------------------------------------" << endl;
+	printerObj.printEverywhere(f, "---------------------------------------------------------------/n");
 }
 
 /*
@@ -535,18 +535,17 @@ void splay::print(treeNode* p, int addSpaces, ofstream& f)
 
 		for (int i = 0; i < addSpaces; i++)
 		{
-			f << " ";
-			cout << " ";
+			printerObj.printEverywhere(f, " ");
 		}
 		if (p->twin != NULL && p->numOfTwin > 1)
 		{
-			f << p->key << "(" << p->numOfTwin << ")" << endl;
-			cout << p->key << "(" << p->numOfTwin << ")" << endl;
+			string a = p->key + '(' + p->numOfTwin + ")/n";
+			printerObj.printEverywhere(f, a);
 		}
 		else
 		{
-			f << p->key << endl;
-			cout << p->key << endl;
+			string a = p->key + "/n";
+			printerObj.printEverywhere(f, a);
 		}
 
 		if (p->left != NULL)

@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="avl.h" />
     <ClInclude Include="bst.h" />
+    <ClInclude Include="printer.h" />
     <ClInclude Include="splay.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
